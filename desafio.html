@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabuadas Interativas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+        }
+        h3 {
+            margin-top: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        BUTTON:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    
+     <h2>Tabuadas Interativas</h2>
+
+
+    <button onclick="gerarTabuadas()">Gerar Tabuadas</button>
+    <div id="tabuadas"></div>
+
+    <script>
+        function gerarTabuadas() {
+            let tabuadas = document.getElementById("tabuadas");
+            tabuadas.innerHTML = ""; // Limpa o conteúdo anterior
+
+            for (let base = 1; base <= 10; base++) {
+                let card = document.createElement("div");
+                card.className = "card";
+
+                let titulo = document.createElement("h3");
+                titulo.textContent = `Tabuada do ${base}`;
+                card.appendChild(titulo);
+
+                for (let multiplicador = 1; multiplicador <= 10; multiplicador++) {
+                    let linha = document.createElement("p");
+                    linha.textContent = `${base} x ${multiplicador} = ${base * multiplicador}`;
+                    card.appendChild(linha);
+                }
+
+                tabuadas.appendChild(card);
+            }
+        }
+    </script>
+   
+</body>
+</html>
