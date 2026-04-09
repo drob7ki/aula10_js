@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber-SENAI - Sistema de Segurança</title>
+</head>
+<body>
+
+  <script>
+    const usuarios = [
+      { login: "admin", senha: "1234" },
+      { login: "joao", senha: "abc123" },
+      { login: "maria", senha: "senha456" },
+      { login: "carlos", senha: "car789" },
+      { login: "ana", senha: "ana321" },
+      { login: "pedro", senha: "pedro2024" },
+      { login: "lucas", senha: "lucas777" },
+      { login: "juliana", senha: "juju999" },
+      { login: "rafael", senha: "raf123" },
+      { login: "beatriz", senha: "bia456" }
+    ];
+
+    let tentativas = 3;
+    let acessoLiberado = false;
+    let cancelou = false;
+
+    do {
+      let login = prompt("Digite seu login:");
+
+      if (login === null) {
+        cancelou = true;
+        break;
+      }
+
+      let senha = prompt("Digite sua senha:");
+
+      if (senha === null) {
+        cancelou = true;
+        break;
+      }
+
+      // Procura o usuário no array
+      let usuarioEncontrado = usuarios.find(function(usuario) {
+        return usuario.login === login && usuario.senha === senha;
+      });
+
+      if (usuarioEncontrado) {
+        acessoLiberado = true;
+        alert("Acesso Liberado");
+      } else {
+        tentativas--;
+
+        if (tentativas > 0) {
+          alert("Login ou senha incorretos. Restam " + tentativas + " tentativa(s).");
+        }
+      }
+
+    } while (!acessoLiberado && tentativas > 0 && !cancelou);
+
+    if (!acessoLiberado && tentativas === 0) {
+      alert("SISTEMA BLOQUEADO - Procure o Suporte");
+    }
+  </script>
+
+</body>
+</html>
